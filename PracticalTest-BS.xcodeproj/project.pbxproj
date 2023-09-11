@@ -51,6 +51,11 @@
 		3EF019D02AAF5FEA000AB245 /* PracticalTest-BS */ = {
 			isa = PBXGroup;
 			children = (
+				3EF019E32AAF6536000AB245 /* Core */,
+				3EF019E12AAF651E000AB245 /* Extension */,
+				3EF019DF2AAF64EC000AB245 /* Model */,
+				3EF019E02AAF650D000AB245 /* Service */,
+				3EF019E22AAF6529000AB245 /* Utility */,
 				3EF019D12AAF5FEA000AB245 /* PracticalTest_BSApp.swift */,
 				3EF019D32AAF5FEA000AB245 /* ContentView.swift */,
 				3EF019D52AAF5FEA000AB245 /* Assets.xcassets */,
@@ -65,6 +70,41 @@
 				3EF019D82AAF5FEA000AB245 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3EF019DF2AAF64EC000AB245 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EF019E02AAF650D000AB245 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3EF019E12AAF651E000AB245 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3EF019E22AAF6529000AB245 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3EF019E32AAF6536000AB245 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
