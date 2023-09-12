@@ -16,6 +16,7 @@ class MovieSearchViewModel: ObservableObject {
     private let jsonDecoder = Utils.jsonDecoder
     @Published var movielist = MovieList(results: [])
     private var subscriptionToken: AnyCancellable?
+    @Published var movie: Movie?
     func startSearch(){
         self.movies = nil
         guard subscriptionToken == nil else { return }
@@ -30,8 +31,21 @@ class MovieSearchViewModel: ObservableObject {
         
         
     }
+    func loadMovie(id: Int){
+        self.movie = nil
+        self.fetchMovie(id: id) {[weak self] (result) in
+            guard let self = self else { return }
+        
+            switch result {
+            case .success(let movie):
+                self.movie = movie
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     func search(query: String) {
-        self.fetchUsers(query: searchText.lowercased()) {[weak self] (result) in
+        self.fetchMovie(query: searchText.lowercased()) {[weak self] (result) in
             switch result {
             case .success(let response):
                 self?.movies = response.results
@@ -41,7 +55,7 @@ class MovieSearchViewModel: ObservableObject {
             }
         }
     }
-    func fetchUsers(query: String, completion: @escaping (Result<MovieList, MovieError>) -> ()){
+    func fetchMovie(query: String, completion: @escaping (Result<MovieList, MovieError>) -> ()){
         guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
             completion(.failure(.invalidEndpoint))
             return
@@ -54,6 +68,17 @@ class MovieSearchViewModel: ObservableObject {
         ], completion: completion)
         
     }
+    //MARK: - Fetch Movie
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
+        guard let url = URL(string: "\(baseAPIURL)/movie/\(id)") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        self.loadURLAndDecode(url: url, params: [
+            "append_to_response": "videos,credits"
+        ], completion: completion)
+    }
+    //MARK: - Load URL and Decode
     private func loadURLAndDecode<D: Decodable>(url: URL, params: [String: String]? = nil, completion: @escaping (Result<D, MovieError>) -> ()) {
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             completion(.failure(.invalidEndpoint))
@@ -106,7 +131,6 @@ class MovieSearchViewModel: ObservableObject {
     
     
 }
-
 
 
 

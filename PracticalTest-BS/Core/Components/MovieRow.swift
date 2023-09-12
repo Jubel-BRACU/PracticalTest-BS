@@ -11,16 +11,15 @@ struct MovieRow : View {
     var movie: Movie
     var body: some View {
         HStack(spacing: 30){
-            if let image = movie.image {
-              Image(image)
+            AsyncImage(url: URL(string: "\(BASE_IMAGE_URL)\(movie.poster_path)")){image in
+                image
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 90, height: 120)
+                    .aspectRatio(contentMode: .fill)
+                
+            } placeholder: {
+                Color.gray
             }
-            else {
-                Image(systemName: "photo")
-            }
-            
+            .frame(width: 90, height: 120)
             VStack(alignment: .leading, spacing: 10){
                 Text(movie.title)
                     .font(.title3)

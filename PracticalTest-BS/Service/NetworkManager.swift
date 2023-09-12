@@ -9,8 +9,7 @@ import Foundation
 class NetworkManager: ObservableObject {
     @Published var movies = MovieList(results: [])
     @Published var loading = false
-    private let api_key = "1d9b898a212ea52e283351e521e17871"
-    private let api_url_base = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key="
+  
     init() {
         loading = true
         loadData()
