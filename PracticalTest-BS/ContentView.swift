@@ -8,13 +8,16 @@
 import SwiftUI
 //MARK: - ContentView
 struct ContentView: View {
+    @StateObject var networkMonitor = NetworkMonitor()
     init() {
         UITabBar.appearance().backgroundColor = UIColor.systemGray5
     }
+   
     var body: some View {
         TabView {
             //MARK: - MovieList View
             MovieListView()
+                .environmentObject(networkMonitor)
                 .tabItem {
                     VStack {
                         Image(systemName: "film")
@@ -25,6 +28,7 @@ struct ContentView: View {
             
             //MARK: - Movie Search View
             MoviewSearchView()
+                .environmentObject(networkMonitor)
                 .tabItem {
                     VStack {
                         Image(systemName: "magnifyingglass")
@@ -42,3 +46,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
