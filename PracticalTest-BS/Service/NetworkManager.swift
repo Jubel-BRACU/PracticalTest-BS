@@ -14,7 +14,7 @@ class NetworkManager: ObservableObject {
         loading = true
         loadData()
     }
-    
+    //MARK: - Load MOview List 
     private func loadData() {
         guard let url = URL(string: "\(api_url_base)\(api_key)") else { return }
         URLSession.shared.dataTask(with: url){ (data, _, _) in
