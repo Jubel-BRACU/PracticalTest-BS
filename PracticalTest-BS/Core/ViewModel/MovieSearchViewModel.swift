@@ -8,8 +8,7 @@
 import Combine
 import Foundation
 class MovieSearchViewModel: ObservableObject {
-    private let baseAPIURL = "https://api.themoviedb.org/3"
-    private let apiKey = "1d9b898a212ea52e283351e521e17871"
+    
     private let urlSession = URLSession.shared
     @Published var movies: [Movie]?
     @Published var searchText = ""
@@ -17,10 +16,11 @@ class MovieSearchViewModel: ObservableObject {
     @Published var movielist = MovieList(results: [])
     private var subscriptionToken: AnyCancellable?
     @Published var movie: Movie?
+    
+    //MARK: - Start Search
     func startSearch(){
         self.movies = nil
         guard subscriptionToken == nil else { return }
-        
         self.subscriptionToken = self.$searchText
             .map { [weak self] text in
                 self?.movies = nil
@@ -31,11 +31,11 @@ class MovieSearchViewModel: ObservableObject {
         
         
     }
+    //MARK: - Load Movie
     func loadMovie(id: Int){
         self.movie = nil
         self.fetchMovie(id: id) {[weak self] (result) in
             guard let self = self else { return }
-        
             switch result {
             case .success(let movie):
                 self.movie = movie
@@ -44,6 +44,8 @@ class MovieSearchViewModel: ObservableObject {
             }
         }
     }
+    
+    //MARK: - Search Movie
     func search(query: String) {
         self.fetchMovie(query: searchText.lowercased()) {[weak self] (result) in
             switch result {
@@ -55,6 +57,7 @@ class MovieSearchViewModel: ObservableObject {
             }
         }
     }
+    //MARK: - Fetch Movie
     func fetchMovie(query: String, completion: @escaping (Result<MovieList, MovieError>) -> ()){
         guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
             completion(.failure(.invalidEndpoint))
@@ -85,7 +88,7 @@ class MovieSearchViewModel: ObservableObject {
             return
         }
         
-        var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        var queryItems = [URLQueryItem(name: "api_key", value: api_key)]
         if let params = params {
             queryItems.append(contentsOf: params.map { URLQueryItem(name: $0.key, value: $0.value) })
         }
