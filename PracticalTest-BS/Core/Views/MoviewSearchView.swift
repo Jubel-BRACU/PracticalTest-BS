@@ -24,17 +24,23 @@ struct MoviewSearchView: View{
                         
                         VStack(alignment: .leading, spacing: 10){
                             HStack{
-                                Spacer()
                                 Text(movie.title)
                                     .font(.title3)
                                     .fontWeight(.medium)
                                 Spacer()
+                                Text(movie.yearText)
                             }
                             Text(movie.overview)
                                 .fixedSize(horizontal: false, vertical: true)
+                            HStack {
+                                if !movie.ratingText.isEmpty {
+                                    Text(movie.ratingText).foregroundColor(.yellow)
+                                }
+                                Text(movie.scoreText)
+                            }
                             Divider()
-                        }.padding(.horizontal)
-                    
+                        }.padding(.horizontal,30)
+                        
                     }
                     
                 }
@@ -59,5 +65,6 @@ struct MoviewSearchView: View{
 struct MoviewSearchView_Previews: PreviewProvider {
     static var previews: some View {
         MoviewSearchView()
+            .environmentObject(NetworkMonitor())
     }
 }

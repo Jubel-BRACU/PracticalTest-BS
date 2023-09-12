@@ -19,4 +19,9 @@ class Utils {
         dateFormatter.dateFormat = "yyyy-mm-dd"
         return dateFormatter
     }()
+    static let yearFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter
+    }()
 }
