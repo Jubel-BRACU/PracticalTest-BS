@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EB3D6882AB0A21500575F11 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3D6872AB0A21500575F11 /* SearchBar.swift */; };
 		3EF019D22AAF5FEA000AB245 /* PracticalTest_BSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF019D12AAF5FEA000AB245 /* PracticalTest_BSApp.swift */; };
 		3EF019D42AAF5FEA000AB245 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF019D32AAF5FEA000AB245 /* ContentView.swift */; };
 		3EF019D62AAF5FEA000AB245 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF019D52AAF5FEA000AB245 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EB3D6872AB0A21500575F11 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		3EF019CE2AAF5FEA000AB245 /* PracticalTest-BS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PracticalTest-BS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF019D12AAF5FEA000AB245 /* PracticalTest_BSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticalTest_BSApp.swift; sourceTree = "<group>"; };
 		3EF019D32AAF5FEA000AB245 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EB3D6862AB0A0D800575F11 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EB3D6872AB0A21500575F11 /* SearchBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3EF019C52AAF5FE9000AB245 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 		3EF019E32AAF6536000AB245 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3EB3D6862AB0A0D800575F11 /* Views */,
 				3EF019E42AAF6B0D000AB245 /* Components */,
 			);
 			path = Core;
@@ -193,6 +204,7 @@
 			files = (
 				3EF019D42AAF5FEA000AB245 /* ContentView.swift in Sources */,
 				3EF019E62AAF6B27000AB245 /* MovieRow.swift in Sources */,
+				3EB3D6882AB0A21500575F11 /* SearchBar.swift in Sources */,
 				3EF019E82AAF6B90000AB245 /* Movie.swift in Sources */,
 				3EF019D22AAF5FEA000AB245 /* PracticalTest_BSApp.swift in Sources */,
 			);
